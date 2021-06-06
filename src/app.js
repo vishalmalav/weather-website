@@ -5,7 +5,7 @@ const request = require("request")
 const weather = require("./utils/weather")
 const geoCode = require("./utils/geoLoc")
 
-
+const port = process.env.PORT || 3000
 
 
 const app = express()
@@ -68,7 +68,7 @@ app.get('/weather', (req, res) => {
     geoCode(req.query.address, (error, { latitude, logitude, place } = {}) => {
         if (error) {
             return res.send({
-                error: error
+                error: erro
             })
         }
         console.log(place)
@@ -103,6 +103,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port .' + 3000)
 })
